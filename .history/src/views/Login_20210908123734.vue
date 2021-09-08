@@ -144,6 +144,7 @@ import md5 from "blueimp-md5";
                             .post("/BashStage/verify",
                             {"phone":this.phone,"password":this.password}).then(res=>{
                                 const {resultCode,data} = res.data;
+                                
                                 //确认成功
                                 if(resultCode == 200){
                                     //返回 data令牌，同等于 月票
@@ -152,7 +153,7 @@ import md5 from "blueimp-md5";
                                     this.$message.success("欢迎您,"+this.formData.phone+",今天 好像"+"狂神店铺"+"出商品了");
                                     this.$router.push("/home"); //跳转 页面
                                 }else{  //登录失败
-                                    this.$message.success("手机号码或密码 输入有误! 请检查")
+                                    this.$
                                 }
                             })
                     }

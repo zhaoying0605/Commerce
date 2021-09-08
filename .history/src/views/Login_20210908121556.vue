@@ -123,7 +123,7 @@ import md5 from "blueimp-md5";
     },
     methods:{
       handleLogin(){
-          if((this.formData.phone == "" || this.formData.password == "") || (this.formData.phone.length!=11 || (this.formData.password.length<6 || this.formData.password.length>20))){
+          if(this.formData.phone == "" || this.formData.password == ""){
                 //只要有一个 等于空 那么 则停止转圈
                 this.fullscreenLoading = false;
                     console.log('输入的有误');
@@ -135,33 +135,30 @@ import md5 from "blueimp-md5";
 
 
             //点击  登录 时的操作
-            this.$refs.myForm.validate((valid) => {
+            this.$refs.myForm.validate((valid)=>{
                 
-                setTimeout(()=>{
-                    //valid 验证成功还是 失败 布尔值
-                    if(valid){
-                        this.axios
-                            .post("/BashStage/verify",
-                            {"phone":this.phone,"password":this.password}).then(res=>{
-                                const {resultCode,data} = res.data;
-                                //确认成功
-                                if(resultCode == 200){
-                                    //返回 data令牌，同等于 月票
-                                    //查看 data令牌， 进行存储
-                                    console.log(data)
-                                    this.$message.success("欢迎您,"+this.formData.phone+",今天 好像"+"狂神店铺"+"出商品了");
-                                    this.$router.push("/home"); //跳转 页面
-                                }else{  //登录失败
-                                    this.$message.success("手机号码或密码 输入有误! 请检查")
-                                }
-                            })
-                    }
-                    this.fullscreenLoading = false; //结束转圈
-                },2000)                
             })
+
+
       }  
-    }
+    },
+    setup() {
+      return {
+        input: ref(''),
+      }
+    },
   })
+
+// export default {
+
+//     mounted() {
+        
+//     },
+
+//     methods: {
+        
+//     },
+// };
 </script>
 
 <style>

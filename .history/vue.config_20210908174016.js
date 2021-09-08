@@ -1,6 +1,6 @@
 module.exports={
     devServer: {
         disableHostCheck: false,
-        port: '2002'
+        port: '0422'
     }
 }

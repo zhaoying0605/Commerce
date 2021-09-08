@@ -17,8 +17,6 @@ axios.defaults.timeout = 10000
 
 
 const app = createApp(App)
-//vue 中不需要 引入 axios 文件 只需要 使用 this.axios 就可以了
-app.config.globalProperties.axios = axios
 // app.use(store)
 app.use(router)
 app.use(ElementPlus)

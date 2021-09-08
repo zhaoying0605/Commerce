@@ -1,4 +1,7 @@
 <template>
+<head>
+     <link rel="stylesheet" href="//unpkg.com/element-plus/dist/index.css" />
+</head>
 <div id="father">
     <div class="hengxaing" style="margin-left: 270px"><a href="HomePage.jsp"><img src="../assets/IMG/Login/1609309019981.jpg" alt=""></a></div>
     <div class="hengxaing">
@@ -19,28 +22,28 @@
                 label-position="top"
                 label-width="20px"
                 style="width:330px;margin:0px auto"
-                :model="formData"
-                :rules="rules"  
             >
-                <el-form-item class="phone" name="phone" id="phone" prop="phone">
+                <el-form-item label=" " class="phone" name="phone" id="phone" prop="userName">
                     <el-input
-                        placeholder="请输入手机号"
+                        placeholder="请输入用户名"
                         v-model="formData.phone" 
                     ></el-input>
                 </el-form-item>
 
                 <div id="msg" style="color: red;float: left;margin-left: 50px;font-size: 14px;line-height: 25px"></div>
-                <br>
-                <el-form-item class="phone" name="phone" id="phone" prop="password">
+                <div>
+                    <!-- <input class="phone" name="phone" id="phone" style="text-indent: 1em" placeholder="请输入手机号" type="text"> -->
+                    <!-- <el-input v-model="password" placeholder="请输入密码" clearable style="width:330px;height:50px"></el-input> -->
+                </div>
+                <el-form-item label=" " class="phone" name="phone" id="phone" prop="userName">
                     <el-input
-                        type="password"
                         placeholder="请输入密码"
                         v-model="formData.password" 
                         style="heigh:50px"
                     ></el-input>
                 </el-form-item>
 
-                <div style="margin-top: 25px;margin-bottom:15px;margin-left: -210px;cursor:pointer;font-size: 14px;text-align: center;color: blue">
+                <div style="margin-top: 15px;margin-bottom:15px;margin-left: -210px;cursor:pointer;font-size: 14px;text-align: center;color: blue">
                     邮箱/用户名登录
                 </div>
                     <!-- <div class="denglu" id="denglu">
@@ -88,7 +91,6 @@
 
 <script>
 import { defineComponent, ref } from 'vue'
-import md5 from "blueimp-md5";
 
   export default defineComponent({
       
@@ -98,70 +100,61 @@ import md5 from "blueimp-md5";
                 phone: "",
                 password: "",
             },
-        rules: {
-            phone: [
-            { required: true, message: "请输入手机号", trigger: "blur" },
-            {
-                max: 11,
-                min: 11,
-                message: "手机号码长度不正确",
-                trigger: "blur",
+            rules:{
+                phone:[
+                    {required:true,message:"请先输入您的用户名",trigger:"blur"},
+                    {
+                        max:11,
+                        min:11,
+                        message:"输入的或多或少了，再来一遍吧!",
+                        trigger:"blur"
+                    },
+                ],
+                password:[
+                    {required:true,message:"请先您设置的密码"},
+                    {
+                        max:20,
+                        min:6,
+                        message:"输入的密码范围不规范!",
+                        trigger:"blur"
+                    },
+                ],
             },
-            ],
-            password: [
-            { required: true, message: "请输入密码", trigger: "blur" },
-            {
-                max: 20,
-                min: 6,
-                message: "长度是位于 6 到 20 个字符",
-                trigger: "blur",
-            },
-            ],
-        },
-        fullscreenLoading: false,
+            fullscreenLoading:false,
         };
     },
     methods:{
       handleLogin(){
-          if((this.formData.phone == "" || this.formData.password == "") || (this.formData.phone.length!=11 || (this.formData.password.length<6 || this.formData.password.length>20))){
+          if(this.formData.phone == "" || this.formData == ""){
                 //只要有一个 等于空 那么 则停止转圈
                 this.fullscreenLoading = false;
+                setTimeout(()=>{
                     console.log('输入的有误');
-
+                    this.fullscreenLoading = true;
+                },5000)
           }else{
                 //都不等于 空时 则 转圈/加载 等待进入 查询
                 this.fullscreenLoading = true;
           }
-
-
-            //点击  登录 时的操作
-            this.$refs.myForm.validate((valid) => {
-                
-                setTimeout(()=>{
-                    //valid 验证成功还是 失败 布尔值
-                    if(valid){
-                        this.axios
-                            .post("/BashStage/verify",
-                            {"phone":this.phone,"password":this.password}).then(res=>{
-                                const {resultCode,data} = res.data;
-                                //确认成功
-                                if(resultCode == 200){
-                                    //返回 data令牌，同等于 月票
-                                    //查看 data令牌， 进行存储
-                                    console.log(data)
-                                    this.$message.success("欢迎您,"+this.formData.phone+",今天 好像"+"狂神店铺"+"出商品了");
-                                    this.$router.push("/home"); //跳转 页面
-                                }else{  //登录失败
-                                    this.$message.success("手机号码或密码 输入有误! 请检查")
-                                }
-                            })
-                    }
-                    this.fullscreenLoading = false; //结束转圈
-                },2000)                
-            })
       }  
-    }
+    },
+    setup() {
+      return {
+        input: ref(''),
+      }
+    },
   })
+
+// export default {
+
+//     mounted() {
+        
+//     },
+
+//     methods: {
+        
+//     },
+// };
 </script>
 
 <style>
