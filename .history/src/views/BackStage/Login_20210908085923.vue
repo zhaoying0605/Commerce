@@ -1,0 +1,81 @@
+<template>
+    <div id="father">
+        <div class="hengxaing" style="margin-left: 270px"><a href="HomePage.jsp"><img src="IMG/Login/1609309019981.jpg" alt=""></a></div>
+        <div class="hengxaing">
+            <div class="LoginForm">
+                <br>
+                <div>
+                    <img src="IMG/RegisTer/logo_01.png" width="180px" alt="">
+                </div>
+                <div style="margin-top: 20px;font-size: 21px;text-align: center">
+                    账号登录
+                </div>
+                <div style="margin-top: 30px;margin-bottom:10px;margin-left: 250px;cursor:pointer;font-size: 14px;text-align: center;color: blue">
+                    验证码登录
+                </div>
+                <div>
+                    <input class="Phone" name="Phone" id="Phone" style="text-indent: 1em" placeholder="请输入手机号" type="text">
+                </div>
+                <div id="msg" style="color: red;float: left;margin-left: 50px;font-size: 14px;line-height: 25px"></div>
+                <br><br>
+                <div>
+                    <input class="Phone" name="Phone" id="psw" style="text-indent: 1em" placeholder="请输入密码" type="text">
+                </div>
+
+                <div style="margin-top: 15px;margin-bottom:15px;margin-left: -210px;cursor:pointer;font-size: 14px;text-align: center;color: blue">
+                    邮箱/用户名登录
+                </div>
+                    <div class="denglu" id="denglu">
+                        登录
+                    </div>
+                <div style="line-height: 15px">&nbsp;</div>
+                <a href="Register.jsp">
+                <div class="zhuce" style="" id="zhuce">注册vivo账户
+                </div>
+                </a>
+                <div style="font-size: 14px;color:#7F828C;line-height: 50px">
+                    忘记密码
+                </div>
+
+                <div style="font-size: 14px;color:#999;line-height: 50px">
+                    ———————— 其他方式登录 ————————
+                </div>
+                <div class="wangzhi">
+                    <ul>
+                        <li><img src="IMG/Login/微信.png" alt=""></li><li>&nbsp;&nbsp;</li>
+                        <li><img src="IMG/Login/支付宝.png" alt=""></li><li>&nbsp;&nbsp;</li>
+                        <li><img src="IMG/Login/微博.png" alt=""></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+<script>
+export default {
+    name: 'VueprojectLogin',
+
+    components: { ComponentName },
+
+    directives: { DirectiveName },
+
+    data() {
+        return {
+            
+        };
+    },
+
+    mounted() {
+        
+    },
+
+    methods: {
+        
+    },
+};
+</script>
+
+<style lang="scss" scoped>
+
+</style>

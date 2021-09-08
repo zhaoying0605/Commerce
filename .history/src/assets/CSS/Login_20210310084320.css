@@ -1,0 +1,66 @@
+body,html{
+    scroll-behavior: smooth;
+}
+ul{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+}
+*,img{
+    margin: 0px;
+    padding: 0px;
+}
+#father{
+    width: 100%;
+    height: 800px;
+    background-color: #F0F2F5;
+    text-align: center;
+}
+.hengxaing{
+    display: inline-block;
+}
+.LoginForm{
+    width: 420px;
+    height: 600px;
+    background-color: #fff;
+    position: relative;
+    top: -120px;
+    left: -380px;
+}
+.Phone{
+    width: 320px;
+    height: 45px;
+    border: 1px solid #c7ddef;
+    /*text-indent: 1em;*/
+    font-size:16px;
+}
+.denglu{
+    width: 320px;
+    line-height: 45px;
+    background-color: #4471FF;
+    color: #fff;
+    margin: 0px auto;
+    cursor: pointer;
+    transition: all .3s;
+}
+.zhuce{
+    width: 320px;
+    line-height: 45px;
+    margin: 0px auto;
+    cursor: pointer;
+    color: #4471FF;
+    border: 1px solid #4471FF;
+    background-color: #fff;
+    transition: all 0.2s;
+}
+.zhuce:hover{
+    background-color: #D4DFFA;
+}
+
+.wangzhi ul li{
+    display: inline-block;
+}
+.denglu:hover{
+    background-color: #d9534f;
+}
